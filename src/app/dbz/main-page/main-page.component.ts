@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-
-interface Personaje {
-  nombre: string;
-  poder: number;
-}
+import { Personaje } from '../interfaces/dbz.interface';
 
 @Component({
   selector: 'app-main-page',
@@ -24,21 +20,8 @@ export class MainPageComponent {
     poder: 0
   };
 
-  agregar() {
-    if (this.nuevo.nombre.trim().length === 0) {
-      return;
-    }
-
-    /*  Con el FormModule emite y recibe datos,
-        por lo tanto el this.nuevo ya está cargado
-        con la info agregada por el usuario al hacer submit
-    */
-    this.personajes.push(this.nuevo);
-
-    this.nuevo = {
-      nombre: '',
-      poder: 0
-    }
+  agregarNuevoPersonaje(argumento: Personaje) {
+    this.personajes.push(argumento);
   }
 
 }
